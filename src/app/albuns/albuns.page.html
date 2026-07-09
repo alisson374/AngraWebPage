@@ -1,0 +1,76 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title> Álbuns </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="page-content">
+    <div class="discography-header">
+      <h2>Discografia</h2>
+      <p>Álbuns do Angra</p>
+    </div>
+
+
+    <div class="album-grid">
+      @for (album of albums; track album.title) {
+        <button
+          class="album-card"
+          type="button"
+          [class.active]="selectedAlbum().title === album.title"
+          (click)="selectAlbum(album)"
+        >
+          <img [src]="album.cover" [alt]="album.title" />
+          <strong>{{ album.title }}</strong>
+          <span>{{ album.year }}</span>
+        </button>
+      }
+    </div>
+
+    @if (selectedTrack()) {
+      <div class="player-inline">
+        <h4>Escutando: {{ selectedTrack()?.title }}</h4>
+        <iframe
+          [src]="getVideoUrl(selectedTrack())"
+          title="Player de áudio"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+      </div>
+    }
+
+    <div class="album-view">
+      <div class="album-cover-card">
+        <img [src]="selectedAlbum().cover" [alt]="selectedAlbum().title" />
+      </div>
+
+      <div class="album-detail-card">
+        <div class="album-nav">
+          <button class="nav-button" type="button" (click)="previousAlbum()">←</button>
+          <h3>{{ selectedAlbum().title }}</h3>
+          <button class="nav-button" type="button" (click)="nextAlbum()">→</button>
+        </div>
+
+        <p class="album-year">{{ selectedAlbum().year }}</p>
+
+        <div class="track-list">
+          <h4>Faixas</h4>
+          <ion-list>
+            @for (track of selectedAlbum().tracks; track track.title) {
+              <ion-item button (click)="selectTrack(track)">
+                <ion-label>{{ track.title }}</ion-label>
+              </ion-item>
+            }
+          </ion-list>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</ion-content>

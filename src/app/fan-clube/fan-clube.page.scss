@@ -1,0 +1,68 @@
+.form-card {
+  max-width: 480px;
+  margin: 24px auto;
+  padding: 24px;
+  border-radius: 16px;
+  background: var(--ion-color-light);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.form-card h2 {
+  margin: 0 0 8px;
+  color: var(--ion-color-primary);
+}
+
+.form-card p {
+  margin: 0 0 16px;
+  color: var(--ion-text-color);
+}
+
+.form-item {
+  border-radius: 8px;
+  margin-bottom: 4px;
+}
+
+.error-message {
+  margin: 0 0 12px 16px;
+  color: #d93025;
+  font-size: 0.85rem;
+}
+
+.modal-body {
+  padding: 24px;
+  text-align: center;
+  max-width: min(90vw, 420px);
+  margin: 0 auto;
+}
+
+.modal-body h3 {
+  margin: 0 0 8px;
+  color: var(--ion-color-primary);
+}
+
+.modal-body p {
+  margin: 0 0 16px;
+  color: var(--ion-text-color);
+}
+
+.success-modal {
+  --width: min(420px, 90vw);
+  --height: auto;
+  --border-radius: 16px;
+}
+
+.submit-button {
+  margin-top: 16px;
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 16px;
+  background: var(--ion-color-primary);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  opacity: 0.9;
+}

@@ -1,0 +1,124 @@
+.page-content {
+  padding: 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.discography-header {
+  margin-bottom: 16px;
+}
+
+.discography-header h2 {
+  margin: 0;
+  color: var(--ion-color-primary);
+}
+
+.discography-header p {
+  margin: 4px 0 0;
+  color: var(--ion-color-medium);
+}
+
+.album-view {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.album-cover-card,
+.album-detail-card,
+.album-card,
+.player-card {
+  background: var(--ion-color-light);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.album-cover-card img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.album-detail-card h3 {
+  margin: 0;
+  color: var(--ion-color-primary);
+}
+
+.album-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.nav-button {
+  border: none;
+  background: var(--ion-color-primary);
+  color: white;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+}
+
+.album-year {
+  margin: 8px 0 12px;
+  font-weight: 600;
+  color: var(--ion-color-medium);
+}
+
+.track-list h4 {
+  margin: 0 0 8px;
+}
+
+.album-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.album-card {
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.album-card.active {
+  border-color: var(--ion-color-primary);
+}
+
+.album-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.player-inline {
+  margin-top: 8px;
+}
+
+.player-inline h4 {
+  margin: 0 0 8px;
+  color: var(--ion-color-primary);
+}
+
+.player-inline iframe {
+  width: 100%;
+  min-height: 220px;
+  border: none;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .album-view {
+    grid-template-columns: 1fr;
+  }
+
+  .album-cover-card {
+    max-width: 240px;
+    margin: 0 auto;
+  }
+}

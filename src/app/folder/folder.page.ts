@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonContent } from '@ionic/angular/standalone';
 
@@ -6,6 +6,7 @@ import { IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonContent 
   selector: 'app-folder',
   templateUrl: './folder.page.html',
   styleUrls: ['./folder.page.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonContent],
 })
 export class FolderPage implements OnInit {

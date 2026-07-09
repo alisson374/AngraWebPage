@@ -1,0 +1,80 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title> Agenda </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="search-container">
+    <ion-searchbar
+      [(ngModel)]="searchTerm"
+      placeholder="Buscar por data, evento, cidade ou local"
+      debounce="300"
+    ></ion-searchbar>
+  </div>
+
+  <div class="desktop-table">
+    <ion-grid>
+      <ion-row>
+        <ion-col class="column-header"> DATE </ion-col>
+        <ion-col class="column-header"> EVENT </ion-col>
+        <ion-col class="column-header"> LOCATION </ion-col>
+        <ion-col class="column-header"> VENUE </ion-col>
+        <ion-col class="column-header"> TICKETS </ion-col>
+        <ion-col class="column-header"> MEET & GREET </ion-col>
+        <ion-col class="column-header"> POSTER </ion-col>
+      </ion-row>
+
+      @if (tourDates.length > 0) {
+        @if (filteredTourDates.length > 0) {
+          @for (item of filteredTourDates; track $index) {
+            <ion-row>
+              <ion-col> {{ item.date }} </ion-col>
+              <ion-col> {{ item.event }} </ion-col>
+              <ion-col> {{ item.location }} </ion-col>
+              <ion-col> {{ item.venue }} </ion-col>
+              <ion-col> <a [href]="item.ticketsUrl" target="_blank"> Buy Tickets </a> </ion-col>
+              <ion-col> <a [href]="item.meetAndGreetUrl" target="_blank"> Meet & Greet </a> </ion-col>
+              <ion-col> <a [href]="item.posterUrl" target="_blank"> Poster </a> </ion-col>
+            </ion-row>
+          }
+        } @else {
+          <ion-row>
+            <ion-col>Nenhum resultado encontrado.</ion-col>
+          </ion-row>
+        }
+      }
+    </ion-grid>
+  </div>
+
+  <div class="mobile-list">
+    @if (tourDates.length > 0) {
+      @if (filteredTourDates.length > 0) {
+        <ion-list>
+          @for (item of filteredTourDates; track $index) {
+            <ion-item class="mobile-item" lines="full">
+              <ion-label>
+                <h2>{{ item.event }}</h2>
+                <p><strong>Date:</strong> {{ item.date }}</p>
+                <p><strong>Location:</strong> {{ item.location }}</p>
+                <p><strong>Venue:</strong> {{ item.venue }}</p>
+                <div class="mobile-links">
+                  <a [href]="item.ticketsUrl" target="_blank">Tickets</a>
+                  @if (item.meetAndGreetUrl) {
+                    <a [href]="item.meetAndGreetUrl" target="_blank">Meet & Greet</a>
+                  }
+                  <a [href]="item.posterUrl" target="_blank">Poster</a>
+                </div>
+              </ion-label>
+            </ion-item>
+          }
+        </ion-list>
+      } @else {
+        <p class="empty-state">Nenhum resultado encontrado.</p>
+      }
+    }
+  </div>
+</ion-content>

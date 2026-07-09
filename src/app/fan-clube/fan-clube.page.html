@@ -1,0 +1,78 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title> Fã Clube </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="form-card">
+    <h2>Cadastro do Fã Clube</h2>
+    <p>Preencha seus dados para receber novidades.</p>
+
+    <form (ngSubmit)="submitForm()" novalidate>
+      <ion-item class="form-item" lines="none">
+        <ion-label position="stacked">Nome</ion-label>
+        <ion-input
+          [value]="name()"
+          (ionInput)="name.set($any($event.detail.value ?? ''))"
+          type="text"
+          maxlength="100"
+          placeholder="Digite seu nome"
+        ></ion-input>
+      </ion-item>
+      @if (errors()['name']) {
+        <p class="error-message">{{ errors()['name'] }}</p>
+      }
+
+      <ion-item class="form-item" lines="none">
+        <ion-label position="stacked">E-mail</ion-label>
+        <ion-input
+          [value]="email()"
+          (ionInput)="email.set($any($event.detail.value ?? ''))"
+          type="email"
+          placeholder="Digite seu e-mail"
+        ></ion-input>
+      </ion-item>
+      @if (errors()['email']) {
+        <p class="error-message">{{ errors()['email'] }}</p>
+      }
+
+      <ion-item class="form-item" lines="none">
+        <ion-label position="stacked">Idade</ion-label>
+        <ion-input
+          [value]="age()"
+          (ionInput)="age.set($any($event.detail.value ?? ''))"
+          type="number"
+          inputmode="numeric"
+          min="1"
+          placeholder="Digite sua idade"
+        ></ion-input>
+      </ion-item>
+      @if (errors()['age']) {
+        <p class="error-message">{{ errors()['age'] }}</p>
+      }
+
+      <button type="submit" class="submit-button">Cadastrar</button>
+    </form>
+  </div>
+
+</ion-content>
+
+<ion-modal
+  [isOpen]="isModalOpen()"
+  [showBackdrop]="true"
+  [backdropDismiss]="true"
+  (didDismiss)="closeModal()"
+  cssClass="success-modal"
+>
+  <ng-template>
+    <div class="modal-body">
+      <h3>Cadastro concluído</h3>
+      <p>{{ successMessage() }}</p>
+      <button class="submit-button" (click)="closeModal()">Fechar</button>
+    </div>
+  </ng-template>
+</ion-modal>
